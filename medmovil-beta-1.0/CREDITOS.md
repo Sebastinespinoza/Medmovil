@@ -79,3 +79,7 @@ públicos de límites comunales de Chile.
 
 Tipografías: Archivo, Instrument Sans e Instrument Serif, servidas por Google
 Fonts bajo licencia SIL Open Font License.
+
+## three.js
+
+`assets/vendor/three/three.module.min.js` (versión 0.160.0) dibuja la figura 3D del selector de zona. Licencia MIT, ver `assets/vendor/three/LICENSE.txt`. https://threejs.org

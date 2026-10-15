@@ -233,7 +233,8 @@ window.mmDatos = function () {
 		});
 		lista.hidden = true;
 		vacio.hidden = false;
-		if (seleccion) seleccion.textContent = 'Vista espejo: posterior a la izquierda y frontal a la derecha. Selecciona una zona.';
+		if (seleccion) seleccion.textContent = seleccion.dataset.base || 'Vista espejo: posterior a la izquierda y frontal a la derecha. Selecciona una zona.';
+		d.dispatchEvent(new CustomEvent('mm:zona-limpiar'));
 	}
 
 	function elegir(zona) {
@@ -264,6 +265,15 @@ window.mmDatos = function () {
 	});
 
 	if (cerrar) { cerrar.addEventListener('click', limpiar); }
+
+	// La figura 3D (assets/js/cuerpo-3d.js) usa el mismo panel de exámenes.
+	window.medmovilZonas = {
+		elegir: function (grupo, etiqueta) {
+			if (seleccion) seleccion.textContent = 'Zona seleccionada: ' + etiqueta + '.';
+			pintar(grupo, etiqueta);
+		},
+		limpiar: limpiar
+	};
 })();
 
 /* ============================================================

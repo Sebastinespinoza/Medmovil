@@ -140,6 +140,7 @@ function medmovil_tarjeta_prestacion( $post_id ) {
 				</svg>
 				<span class="prod-ic"><?php medmovil_icono( $icono, 'ilo' ); ?></span>
 			<?php endif; ?>
+			<?php medmovil_boton_subir_imagen( $post_id ); ?>
 
 			<span class="prod-tags">
 				<?php if ( $min ) : ?><span class="prod-tag"><?php echo esc_html( $min . ' min' ); ?></span><?php endif; ?>

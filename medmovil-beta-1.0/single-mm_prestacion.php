@@ -91,6 +91,7 @@ while ( have_posts() ) :
 							</svg>
 							<span class="svc-shot-ic"><?php medmovil_icono( $icono, 'ilo' ); ?></span>
 						<?php endif; ?>
+						<?php medmovil_boton_subir_imagen( get_the_ID() ); ?>
 						<figcaption>
 							<span class="svc-shot-tag"><?php echo esc_html( $linea ? $linea->name : __( 'A domicilio', 'medmovil' ) ); ?></span>
 							<span class="svc-shot-tag"><?php echo esc_html( $duracion ? $duracion . ' min' : __( 'A domicilio', 'medmovil' ) ); ?></span>

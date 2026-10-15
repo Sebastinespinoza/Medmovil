@@ -52,6 +52,7 @@ function medmovil_producto_tienda( $id ) {
             <?php endif; ?>
             <?php if ( $precio > 0 && $antes > $precio ) : ?><span class="shop-off">−<?php echo esc_html( round( ( 1 - $precio / $antes ) * 100 ) ); ?>%</span><?php endif; ?>
         </a>
+        <?php medmovil_boton_subir_imagen( $id ); ?>
         <div class="shop-product-body">
             <span class="shop-category"><?php echo esc_html( $linea ? $linea->name : 'Atención a domicilio' ); ?></span>
             <h3><a href="<?php echo esc_url( get_permalink( $id ) ); ?>"><?php echo esc_html( $titulo ); ?></a></h3>

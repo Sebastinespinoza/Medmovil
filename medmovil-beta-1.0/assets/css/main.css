@@ -749,6 +749,23 @@ footer img.flogo{height:38px; width:auto; margin-bottom:14px; filter:brightness(
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mmbody .mmz{fill:var(--surface-3)}}
 .zonas-pista{font-size:.83rem; color:var(--ink-3); margin-top:12px}
 
+/* Figura 3D (assets/js/cuerpo-3d.js) */
+.mm3d{position:relative}
+.mm3d-lienzo{width:100%; aspect-ratio:3/4; max-height:620px; margin-inline:auto}
+.mm3d-lienzo canvas{display:block; width:100% !important; height:100% !important; cursor:grab; touch-action:pan-y;
+  -webkit-user-select:none; user-select:none}
+.mm3d-lienzo canvas.girando{cursor:grabbing}
+.mm3d-tip{position:absolute; transform:translate(-50%,calc(-100% - 14px)); pointer-events:none; white-space:nowrap;
+  background:var(--navy); color:#fff; font-family:var(--f-d); font-weight:700; font-size:.8rem;
+  padding:6px 11px; border-radius:999px; box-shadow:var(--shadow-m)}
+.mm3d-ctrl{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px}
+.mm3d-ctrl button,.mm3d-volver{font:inherit; font-family:var(--f-d); font-weight:700; font-size:.82rem;
+  color:var(--blue); background:var(--surface); border:1.5px solid var(--line); border-radius:999px;
+  padding:7px 15px; cursor:pointer; transition:border-color .16s, color .16s}
+.mm3d-ctrl button:hover,.mm3d-volver:hover{border-color:var(--blue)}
+.mm3d-ctrl button:focus-visible,.mm3d-volver:focus-visible{outline:3px solid var(--blue); outline-offset:2px}
+.mm3d-volver{margin-top:12px}
+
 .zonas-panel{min-height:420px}
 .zonas-vacio{border:2px dashed var(--line-strong); border-radius:var(--r-xl); padding:48px 34px;
   text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; min-height:420px;
@@ -785,6 +802,7 @@ footer img.flogo{height:38px; width:auto; margin-bottom:14px; filter:brightness(
 @media (max-width:900px){
   .zonas{grid-template-columns:1fr; gap:26px}
   .mmbody{max-height:440px}
+  .mm3d-lienzo{max-height:460px}
   .zonas-panel,.zonas-vacio{min-height:0}
   .zonas-vacio{padding:34px 24px}
   .zex{grid-template-columns:auto 1fr; gap:13px}
@@ -1417,3 +1435,16 @@ footer img.flogo{height:38px; width:auto; margin-bottom:14px; filter:brightness(
 .dock .dock-b:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
 .dock .wab,.dock .wab:hover{color:#fff;background:#168b46}
 .dock .chatb,.dock .chatb:hover{color:#fff;background:var(--navy)}
+
+/* 1.8.5: «Cambiar imagen» de una prestación, solo visible para administradores. */
+.shop-product{position:relative}
+.mm-subir{position:absolute; top:10px; right:10px; z-index:3; display:inline-flex; align-items:center; gap:6px;
+  font:inherit; font-family:var(--f-d); font-weight:700; font-size:.76rem; line-height:1;
+  color:#fff; background:rgba(11,53,96,.86); border:0; border-radius:999px; padding:8px 12px 8px 10px;
+  cursor:pointer; box-shadow:0 4px 14px rgba(11,53,96,.25); transition:background .16s}
+.mm-subir:hover{background:var(--blue)}
+.mm-subir:focus-visible{outline:3px solid #fff; outline-offset:2px}
+.mm-subir .ico{width:14px; height:14px; stroke-width:2.4}
+.mm-subir[disabled]{cursor:progress; opacity:.85}
+.mm-subir.ok{background:var(--ok)}
+.mm-subir.mal{background:var(--bad); white-space:normal; max-width:calc(100% - 20px); text-align:left}

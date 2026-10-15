@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MEDMOVIL_VERSION', '1.8.4' );
+define( 'MEDMOVIL_VERSION', '1.8.5' );
 define( 'MEDMOVIL_DIR', get_template_directory() );
 define( 'MEDMOVIL_URI', get_template_directory_uri() );
 
@@ -23,6 +23,7 @@ require_once MEDMOVIL_DIR . '/inc/icons.php';
 require_once MEDMOVIL_DIR . '/inc/storefront.php';
 require_once MEDMOVIL_DIR . '/inc/iconos-panel.php';
 require_once MEDMOVIL_DIR . '/inc/cuerpo.php';
+require_once MEDMOVIL_DIR . '/inc/subir-imagen.php';
 require_once MEDMOVIL_DIR . '/inc/hero.php';
 require_once MEDMOVIL_DIR . '/inc/carrito.php';
 require_once MEDMOVIL_DIR . '/inc/chat.php';

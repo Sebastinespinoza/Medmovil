@@ -68,12 +68,9 @@ if ( $promo ) :
 	<div class="head-1">
 		<div class="wrap">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-				<?php if ( has_custom_logo() ) : ?>
-					<?php the_custom_logo(); ?>
-				<?php else : ?>
-					<img src="<?php echo esc_url( MEDMOVIL_URI . '/assets/img/logo.png' ); ?>"
-					     alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="480" height="134">
-				<?php endif; ?>
+				<?php // Siempre el mismo logo del pie: el «Logo» del Personalizador mostraba otra imagen. ?>
+				<img src="<?php echo esc_url( MEDMOVIL_URI . '/assets/img/logo.png' ); ?>"
+				     alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="480" height="134">
 			</a>
 
 			<form class="hsearch" id="hsearch" role="search" autocomplete="off"
