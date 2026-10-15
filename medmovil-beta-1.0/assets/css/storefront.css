@@ -1,0 +1,96 @@
+/* Compact storefront using the existing MedMovil palette. */
+/* Holgura para sombras y foco dentro de los carruseles. */
+#prestaciones .rail{padding:12px 8px 24px;scroll-padding-inline:8px}
+#prestaciones .rail-i{width:168px}
+#prestaciones .rail-i:hover{transform:translateY(-2px)}
+#prestaciones .rail-i>b{overflow-wrap:break-word;hyphens:auto}
+#prestaciones .cats{overflow:visible;padding-block:8px}
+#prestaciones .cat-wave{display:none}
+#prestaciones .cat:hover{transform:translateY(-2px)}
+.mmbody .mmz:focus{outline:none}
+.mmbody .mmz:focus-visible{outline:none;stroke:var(--navy);stroke-width:6;fill:var(--blue-bright)}
+.mmbody .mmz.act{fill:var(--blue)!important;stroke:var(--navy);stroke-width:4}
+.zonas-pista#zonasSeleccion{min-height:2.8em;color:var(--ink-2);font-weight:600}
+/* Categorías: mismo tamaño, centrado y contraste en ambas presentaciones. */
+#prestaciones .rail-ic{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 12px;border-radius:18px;background:var(--blue-tint);color:var(--blue);flex:none}
+#prestaciones .rail-ic .ilo{display:block;width:32px;height:32px;color:inherit}
+#prestaciones .cat-ic{display:grid;place-items:center;width:46px;height:46px;background:var(--blue-tint);color:var(--blue);border-radius:13px;flex:none}
+#prestaciones .cat-ic .ilo{display:block;width:27px;height:27px;color:inherit}
+#prestaciones .rail-i>b{line-height:1.3;overflow-wrap:break-word;word-break:normal;hyphens:auto}
+.shop-home{padding-top:22px;padding-bottom:26px}
+.shop-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
+.shop-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--blue)}
+.shop-heading h1{font-size:clamp(23px,2.3vw,32px);line-height:1.2;letter-spacing:-.7px;color:var(--ink);margin:7px 0 0}
+.shop-viewall{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:750;color:var(--blue);white-space:nowrap}
+.shop-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;align-items:start}
+.shop-sidebar{padding:20px 16px;border-radius:17px;background:linear-gradient(145deg,var(--navy),var(--navy-mid));color:var(--on-dark)}
+.shop-sidebar .shop-eyebrow{color:var(--on-dark-2)}
+.shop-sidebar h2{font-size:21px;color:var(--on-dark);margin:8px 0 14px}
+.shop-categories{max-height:258px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--blue-bright) transparent;padding-right:3px}
+.shop-filter{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;margin:0 0 6px;border:1px solid #ffffff25;border-radius:9px;color:var(--on-dark);font-size:12px;font-weight:650;text-decoration:none;background:#ffffff08}
+.shop-filter.active,.shop-filter:hover{background:var(--blue);border-color:var(--blue);color:white}
+.shop-filter .ico{width:15px;height:15px;flex:none}
+.shop-main{min-width:0}
+.shop-toolbar{display:flex;gap:10px;margin-bottom:12px}
+.shop-toolbar[hidden],.shop-arrows[hidden]{display:none}
+.shop-toolbar label:first-child{flex:1;min-width:0}
+.shop-toolbar input,.shop-toolbar select{width:100%;min-width:0;padding:9px 12px;font:inherit;font-size:12px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:9px}
+.shop-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--blue-soft) transparent;padding:2px 0 10px;overscroll-behavior-x:contain}
+.shop-product{flex:0 0 calc((100% - 28px)/3);min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:15px;overflow:hidden;display:flex;flex-direction:column;scroll-snap-align:start;box-shadow:var(--shadow-s)}
+.shop-product[hidden]{display:none!important}
+.shop-photo{height:92px;background:var(--blue-tint);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.shop-photo img{height:100%;width:100%;object-fit:cover}
+.shop-photo-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:14px;background:var(--blue-soft);color:var(--blue)}
+.shop-photo-icon .ilo{width:31px;height:31px}
+.shop-photo-label{display:none}
+.shop-off{position:absolute;right:7px;top:7px;font-size:10px;background:var(--ok-bg);color:var(--ok);padding:3px 7px;border-radius:15px}
+.shop-product-body{padding:12px;display:flex;flex-direction:column;flex:1}
+.shop-category{font-size:10px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shop-product h3{font-size:14px;line-height:1.4;min-height:40px;margin:5px 0 9px;color:var(--ink)}
+.shop-product h3 a{color:inherit;text-decoration:none}
+.shop-price{font-size:20px;font-weight:800;color:var(--blue);margin:auto 0 10px}
+.shop-price s{font-size:11px;color:var(--ink-3);font-weight:400;margin-left:6px}
+.shop-reserve{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:22px;background:var(--blue);color:white;padding:9px 6px;font-size:12px;font-weight:750}
+.shop-reserve .ico{width:14px;height:14px}
+.shop-secondary{display:flex;align-items:center;justify-content:space-between;gap:5px;margin-top:8px;flex-wrap:wrap}
+.shop-secondary a{font-size:11px;color:var(--ink-2);font-weight:650}
+.shop-secondary button{font:inherit;font-size:11px;display:flex;align-items:center;gap:3px;border:0;border-radius:7px;background:var(--blue-tint);color:var(--blue);padding:5px 7px;cursor:pointer}
+.shop-secondary .ico{width:12px;height:12px}
+.shop-carousel-footer{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+#shop-count{font-size:11px;color:var(--ink-3)}
+.shop-arrows{display:flex;gap:7px}
+.shop-arrows button{width:32px;height:30px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--blue);cursor:pointer}
+.shop-arrows button:disabled{opacity:.35;cursor:default}
+.shop-arrows .ico{width:17px;height:17px}
+#shop-prev .ico{transform:rotate(180deg)}
+#shop-empty{font-size:13px;color:var(--ink-2);padding:16px}
+.shop-home a:focus-visible,.shop-home button:focus-visible,.shop-home input:focus-visible,.shop-home select:focus-visible,.shop-grid:focus-visible{outline:3px solid var(--blue-bright);outline-offset:2px}
+@media(max-width:1000px){.shop-layout{grid-template-columns:200px minmax(0,1fr);gap:16px}.shop-product{flex-basis:calc((100% - 14px)/2)}}
+@media(max-width:680px){.shop-heading{align-items:start;flex-direction:column;gap:10px}.shop-heading h1{font-size:24px}.shop-layout{grid-template-columns:1fr;gap:12px}.shop-sidebar{padding:12px}.shop-sidebar>.shop-eyebrow,.shop-sidebar h2{display:none}.shop-categories{display:flex;overflow-x:auto;overflow-y:hidden;gap:6px;max-height:none;padding:0}.shop-filter{flex:none;margin:0;padding:8px 10px}.shop-filter .ico{display:none}.shop-toolbar{gap:7px}.shop-toolbar select{max-width:145px}.shop-home{padding-top:18px;padding-bottom:20px}}
+@media(max-width:460px){.shop-product{flex-basis:100%}.shop-photo{height:105px}.shop-product h3{min-height:0}.shop-price{margin-top:0}.shop-product-body{padding:13px}.shop-grid{gap:12px}}
+@media(prefers-reduced-motion:reduce){.shop-grid{scroll-behavior:auto}}
+/* Foto de producto más alta, sin aumentar el tamaño del icono de respaldo. */
+.shop-home .shop-photo{height:clamp(160px,15vw,210px)}
+.shop-home .shop-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.shop-home .shop-grid{padding-top:8px;padding-bottom:16px}
+@media(max-width:460px){.shop-home .shop-photo{height:190px}}
+
+/* 1.8.4: filtros y prestaciones comparten la misma fila. */
+@media(min-width:681px){
+ .shop-home .shop-layout{grid-template-columns:260px minmax(0,1fr);gap:12px 20px;align-items:stretch}
+ .shop-home .shop-main{display:contents}
+ .shop-home .shop-toolbar{grid-column:2;grid-row:1;margin:0}
+ .shop-home .shop-sidebar{grid-column:1;grid-row:2;margin:0 0 14px;display:flex;flex-direction:column}
+ .shop-home .shop-categories{flex:1;max-height:320px;min-height:0}
+ .shop-home .shop-grid{grid-column:2;grid-row:2;padding:0 0 8px;min-width:0}
+ .shop-home .shop-carousel-footer,.shop-home #shop-empty,.shop-home noscript{grid-column:2}
+}
+@media(min-width:681px) and (max-width:1000px){.shop-home .shop-layout{grid-template-columns:230px minmax(0,1fr)}}
+@media(max-width:680px){.shop-home .shop-toolbar{grid-row:2}.shop-home .shop-sidebar{grid-row:1}.shop-home .shop-main{grid-row:3}}
+#prestaciones .rail-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+#prestaciones .rail-nav{display:flex;gap:8px;flex:none;align-items:center}
+#prestaciones .rail-nav button{box-sizing:border-box;display:grid;place-items:center;width:36px;height:36px;min-width:36px;min-height:36px;padding:0;margin:0;flex:0 0 36px;border-radius:50%;box-shadow:none;transform:none;line-height:1;background:var(--surface);color:var(--blue)}
+#prestaciones .rail-nav button:disabled{opacity:.4}
+#prestaciones .rail-nav .ico{width:16px;height:16px;display:block}
+/* Vista espejo: se transforma la geometría junto con su zona interactiva. */
+.mmbody{transform:scaleX(-1)}

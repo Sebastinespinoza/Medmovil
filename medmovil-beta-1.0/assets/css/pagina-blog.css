@@ -1,0 +1,31 @@
+/*
+ * Blog: listado de artículos y ficha del artículo.
+ *
+ * Se carga solo donde hace falta. Ver medmovil_assets() en inc/setup.php.
+ */
+/* ---------- blog ---------- */
+.bgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.bpost{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l);
+  overflow:hidden; display:flex; flex-direction:column; transition:transform .22s, box-shadow .22s}
+.bpost:hover{transform:translateY(-4px); box-shadow:var(--shadow-m)}
+.bpost-img{display:block; aspect-ratio:16/9; overflow:hidden; background:var(--surface-2)}
+.bpost-img img{width:100%; height:100%; object-fit:cover; transition:transform .4s}
+.bpost:hover .bpost-img img{transform:scale(1.04)}
+.bpost-ph{display:grid; place-items:center; width:100%; height:100%;
+  background:linear-gradient(150deg,var(--blue-tint),var(--surface-2))}
+.bpost-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:9px; flex:1}
+.bpost-cat{align-self:flex-start; font-family:var(--f-d); font-weight:700; font-size:.68rem;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--blue); background:var(--blue-tint);
+  border-radius:999px; padding:4px 11px}
+.bpost h3{font-size:1.08rem; line-height:1.28}
+.bpost h3 a{color:inherit}
+.bpost h3 a:hover{color:var(--blue)}
+.bpost p{font-size:.89rem; color:var(--ink-2); line-height:1.55}
+.bpost-meta{margin-top:auto; padding-top:10px; display:flex; align-items:center; gap:8px;
+  font-size:.78rem; color:var(--ink-3); border-top:1px solid var(--line)}
+.bpost-meta i{width:3px; height:3px; border-radius:50%; background:var(--line-strong); display:block}
+
+@media (max-width:1040px){
+  .bgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){
+  .bgrid{grid-template-columns:1fr}}

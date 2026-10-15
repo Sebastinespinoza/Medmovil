@@ -1,0 +1,28 @@
+/*
+ * Página de comuna: las tarjetas del equipo que atiende ahí.
+ *
+ * Se carga solo donde hace falta. Ver medmovil_assets() en inc/setup.php.
+ */
+/* ---------- equipo por comuna ---------- */
+.team{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.tm{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l); padding:22px;
+  display:flex; flex-direction:column; gap:13px; transition:transform .2s, box-shadow .2s}
+.tm:hover{transform:translateY(-3px); box-shadow:var(--shadow-m)}
+.tm-top{display:flex; align-items:center; gap:13px}
+.tm-foto{width:56px; height:56px; border-radius:18px; overflow:hidden; flex:none;
+  display:grid; place-items:center; background:var(--blue-tint)}
+.tm-foto img{width:100%; height:100%; object-fit:cover}
+.tm-ini{font-family:var(--f-d); font-weight:800; font-size:1.5rem; color:var(--blue)}
+.tm-top b{display:block; font-family:var(--f-d); font-size:1.02rem; line-height:1.25}
+.tm-top span{font-size:.83rem; color:var(--ink-3)}
+.tm-bio{font-size:.89rem; color:var(--ink-2); line-height:1.55}
+.tm-datos{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px}
+.tm-datos li{display:flex; gap:9px; align-items:center; font-size:.83rem; color:var(--ink-2)}
+.tm-hace{display:flex; flex-wrap:wrap; gap:6px}
+.tm-hace span{font-size:.75rem; color:var(--ink-3); background:var(--surface-2);
+  border-radius:999px; padding:4px 10px}
+
+@media (max-width:1000px){
+  .team{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){
+  .team{grid-template-columns:1fr}}

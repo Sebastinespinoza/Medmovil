@@ -1,0 +1,424 @@
+/* MedMóvil — portales de paciente, profesional y administración.
+   Se carga solo en la página del portal, para no pesarle al sitio público. */
+
+/* ---------- acceso ---------- */
+.acc{display:grid; grid-template-columns:1fr .85fr; gap:0; min-height:76vh;
+  background:var(--surface)}
+.acc-caja{padding:52px clamp(24px,5vw,64px); display:flex; flex-direction:column;
+  justify-content:center; max-width:620px; margin-left:auto; width:100%}
+.acc-logo img{height:42px; width:auto; margin-bottom:26px}
+.acc-caja h1{font-size:clamp(1.7rem,3vw,2.3rem)}
+.acc-sub{margin-top:12px; color:var(--ink-2); font-size:1rem; max-width:46ch}
+.acc-error{display:flex; gap:10px; align-items:flex-start; margin-top:20px; padding:13px 16px;
+  border-radius:var(--r-m); background:var(--bad-bg); color:var(--bad); font-size:.9rem;
+  border:1px solid color-mix(in srgb,var(--bad) 26%,transparent)}
+.acc-error .ico{width:18px; height:18px; flex:none; margin-top:1px}
+.acc-form{display:flex; flex-direction:column; gap:7px; margin-top:26px}
+.acc-form label{font-size:.85rem; font-weight:600; color:var(--ink-2); margin-top:9px}
+.acc-form input[type=text],.acc-form input[type=email],
+.acc-form input[type=tel],.acc-form input[type=password]{
+  padding:13px 16px; border-radius:13px; border:1.5px solid var(--line-strong);
+  background:var(--surface); color:var(--ink); font-family:var(--f-b); font-size:.95rem}
+.acc-form input:focus{border-color:var(--blue); outline:none; box-shadow:0 0 0 4px var(--blue-tint)}
+.acc-form .btn{justify-content:center; margin-top:18px}
+.acc-ayuda{font-size:.79rem; color:var(--ink-3)}
+.acc-check{display:flex !important; gap:10px; align-items:flex-start; font-weight:400 !important;
+  font-size:.85rem !important; margin-top:16px !important; color:var(--ink-2) !important}
+.acc-check input{margin-top:3px; width:17px; height:17px; accent-color:var(--blue); flex:none}
+.acc-pie{margin-top:16px; font-size:.88rem; color:var(--ink-3); text-align:center}
+.acc-nota{display:flex; gap:10px; align-items:flex-start; margin-top:26px; padding-top:20px;
+  border-top:1px solid var(--line); font-size:.82rem; color:var(--ink-3); line-height:1.5}
+.acc-nota .ico{width:16px; height:16px; flex:none; margin-top:2px; color:var(--ok)}
+.acc-lado{background:linear-gradient(160deg,var(--navy),var(--navy-deep)); color:var(--on-dark);
+  padding:52px clamp(24px,4vw,52px); display:flex; flex-direction:column; justify-content:center}
+.acc-lado h2{color:#fff; font-size:1.35rem; margin-bottom:24px}
+.acc-lado ul{list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:17px}
+.acc-lado li{display:flex; gap:13px; align-items:flex-start; font-size:.93rem; line-height:1.5}
+.acc-lado li .ico{width:20px; height:20px; flex:none; margin-top:2px; color:var(--blue-bright)}
+.acc-lado p{font-size:.86rem; color:var(--on-dark-3); line-height:1.55}
+
+/* ---------- estructura del panel ---------- */
+.pn{display:grid; grid-template-columns:262px 1fr; min-height:100vh; background:var(--paper)}
+.pn-side{background:var(--navy-deep); color:var(--on-dark); display:flex; flex-direction:column;
+  padding:22px 16px; position:sticky; top:0; align-self:start; height:100vh; overflow-y:auto}
+.pn-logo{display:block; margin-bottom:22px; padding-inline:8px}
+.pn-logo img{height:34px; width:auto; filter:brightness(0) invert(1)}
+.pn-side-h{font-family:var(--f-d); font-size:.66rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--on-dark-3); padding-inline:12px; margin-bottom:11px}
+.pn-nav{display:flex; flex-direction:column; gap:3px}
+.pn-l{display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:11px;
+  color:var(--on-dark-2); font-size:.91rem; font-weight:500; transition:.16s}
+.pn-l .ico{width:19px; height:19px; flex:none}
+.pn-l span{flex:1; min-width:0}
+.pn-l:hover{background:rgba(255,255,255,.07); color:#fff}
+.pn-l.on{background:var(--blue); color:#fff; font-weight:600; box-shadow:0 4px 14px rgba(47,127,212,.4)}
+.pn-badge{font-style:normal; font-size:.68rem; font-weight:800; font-family:var(--f-d);
+  background:var(--warn); color:#20160a; border-radius:999px; padding:2px 7px; min-width:20px;
+  text-align:center}
+.pn-l.on .pn-badge{background:#fff; color:var(--blue)}
+.pn-side-f{margin-top:auto; padding-top:18px; border-top:1px solid rgba(255,255,255,.11);
+  display:flex; flex-direction:column; gap:3px}
+
+.pn-main{display:flex; flex-direction:column; min-width:0}
+.pn-top{display:flex; align-items:center; gap:16px; padding:20px clamp(16px,3vw,32px);
+  background:var(--surface); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20}
+.pn-burger{display:none; background:none; border:1.5px solid var(--line-strong); border-radius:10px;
+  width:42px; height:42px; cursor:pointer; color:var(--ink-2); place-items:center}
+.pn-burger .ico{width:20px; height:20px}
+.pn-top-t{flex:1; min-width:0}
+.pn-top-t h1{font-size:clamp(1.2rem,2vw,1.55rem)}
+.pn-top-t p{font-size:.82rem; color:var(--ink-3); margin-top:3px}
+.pn-top-r{display:flex; align-items:center; gap:14px}
+.pn-camp{position:relative; display:grid; place-items:center; width:42px; height:42px;
+  border-radius:12px; background:var(--surface-2); color:var(--ink-2)}
+.pn-camp .ico{width:20px; height:20px}
+.pn-camp i{position:absolute; top:-5px; right:-5px; font-style:normal; font-size:.65rem;
+  font-weight:800; font-family:var(--f-d); background:var(--bad); color:#fff; border-radius:999px;
+  min-width:19px; height:19px; display:grid; place-items:center; padding:0 5px}
+.pn-yo{display:flex; align-items:center; gap:11px}
+.pn-av{width:40px; height:40px; border-radius:13px; display:grid; place-items:center; flex:none;
+  background:var(--blue); color:#fff; font-family:var(--f-d); font-weight:800; font-size:1.05rem}
+.pn-yo b{display:block; font-family:var(--f-d); font-size:.9rem; line-height:1.2}
+.pn-yo small{font-size:.75rem; color:var(--ink-3)}
+.pn-body{flex:1; padding:clamp(18px,3vw,30px); display:flex; flex-direction:column; gap:20px}
+.pn-foot{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  padding:18px clamp(16px,3vw,32px); border-top:1px solid var(--line); font-size:.8rem;
+  color:var(--ink-3); background:var(--surface)}
+.pn-foot a{color:var(--ink-3); margin-right:14px}
+.pn-foot a:hover{color:var(--blue)}
+.pn-bg{position:fixed; inset:0; background:rgba(4,14,28,.5); z-index:30}
+
+/* ---------- indicadores ---------- */
+.pkpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(212px,1fr)); gap:15px}
+/* Reparto parejo segun cuantas tarjetas quedaron visibles: con seis, 3+3; con
+   cinco, 3+2 (las dos ultimas mas anchas) en vez de 4+1. */
+.pkpis-4{grid-template-columns:repeat(4,1fr)}
+.pkpis-3,.pkpis-6{grid-template-columns:repeat(3,1fr)}
+.pkpis-5{grid-template-columns:repeat(6,1fr)}
+.pkpis-5>*{grid-column:span 2}
+.pkpis-5>*:nth-child(n+4){grid-column:span 3}
+@media (max-width:1180px){
+  .pkpis-3,.pkpis-4,.pkpis-6{grid-template-columns:repeat(2,1fr)}
+  .pkpis-5{grid-template-columns:repeat(2,1fr)}
+  .pkpis-5>*,.pkpis-5>*:nth-child(n+4){grid-column:auto}
+}
+.pkpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l);
+  padding:20px; display:flex; flex-direction:column; gap:6px; position:relative; overflow:hidden;
+  transition:transform .2s, box-shadow .2s, border-color .2s}
+.pkpi::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--ac)}
+a.pkpi:hover{transform:translateY(-3px); box-shadow:var(--shadow-m); border-color:var(--ac)}
+.pkpi-ic{width:38px; height:38px; border-radius:12px; display:grid; place-items:center;
+  background:color-mix(in srgb,var(--ac) 13%,transparent); color:var(--ac); margin-bottom:5px}
+.pkpi-ic .ico{width:20px; height:20px}
+.pkpi-l{font-size:.79rem; color:var(--ink-3); font-weight:600}
+.pkpi-v{font-family:var(--f-d); font-weight:800; font-size:1.62rem; letter-spacing:-.035em;
+  color:var(--ink); line-height:1.12; font-variant-numeric:tabular-nums}
+.pkpi-f{display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:2px}
+.pkpi-f small{font-size:.76rem; color:var(--ink-3)}
+.pkpi-d{display:inline-flex; align-items:center; gap:4px; font-size:.75rem; font-weight:700;
+  font-family:var(--f-d); border-radius:999px; padding:2px 8px}
+.pkpi-d .ico{width:13px; height:13px}
+.pkpi-d.up{color:var(--ok); background:var(--ok-bg)}
+.pkpi-d.down{color:var(--bad); background:var(--bad-bg)}
+
+/* ---------- tarjetas y rejillas ---------- */
+.pgrid{display:grid; gap:20px; align-items:start}
+.pgrid-2{grid-template-columns:1fr 1fr}
+.pgrid-2-1{grid-template-columns:1.6fr 1fr}
+.pgrid-1-2{grid-template-columns:1fr 1.6fr}
+.pcard{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l);
+  overflow:hidden; display:flex; flex-direction:column}
+.pcard-h{display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  padding:19px 22px; border-bottom:1px solid var(--line); flex-wrap:wrap}
+.pcard-h h2{font-size:1.05rem}
+.pcard-h p{font-size:.83rem; color:var(--ink-3); margin-top:4px; max-width:60ch}
+.pcard-b{padding:20px 22px; flex:1}
+
+.pbtn{display:inline-flex; align-items:center; gap:7px; font-family:var(--f-d); font-weight:700;
+  font-size:.82rem; padding:9px 15px; border-radius:10px; border:1.5px solid var(--line-strong);
+  background:var(--surface); color:var(--ink-2); cursor:pointer; transition:.16s; white-space:nowrap}
+.pbtn .ico{width:15px; height:15px}
+.pbtn:hover{border-color:var(--blue); color:var(--blue)}
+.pbtn-p{background:var(--blue); border-color:var(--blue); color:#fff}
+.pbtn-p:hover{background:var(--navy); border-color:var(--navy); color:#fff}
+.pbtn-xs{padding:6px 11px; font-size:.75rem; border-radius:8px}
+
+.pill{display:inline-block; font-family:var(--f-d); font-weight:700; font-size:.71rem;
+  border-radius:999px; padding:3px 10px; white-space:nowrap}
+.pill-ok{color:var(--ok); background:var(--ok-bg)}
+.pill-warn{color:var(--warn); background:var(--warn-bg)}
+.pill-bad{color:var(--bad); background:var(--bad-bg)}
+.pill-info{color:var(--blue); background:var(--blue-tint)}
+
+.pn-nota{display:flex; gap:14px; align-items:center; padding:16px 20px; border-radius:var(--r-l);
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--blue)}
+.pn-nota>.ico{width:22px; height:22px; flex:none; color:var(--blue)}
+.pn-nota div{flex:1; min-width:0}
+.pn-nota b{display:block; font-family:var(--f-d); font-size:.97rem}
+.pn-nota p{font-size:.87rem; color:var(--ink-2); margin-top:4px; line-height:1.5}
+.pn-nota-ok{border-left-color:var(--ok); background:var(--ok-bg)}
+.pn-nota-ok>.ico{color:var(--ok)}
+.pn-nota-warn{border-left-color:var(--warn); background:var(--warn-bg)}
+.pn-nota-warn>.ico{color:var(--warn)}
+.pn-nota-bad{border-left-color:var(--bad); background:var(--bad-bg)}
+.pn-nota-bad>.ico{color:var(--bad)}
+
+.pn-vacio{text-align:center; padding:38px 16px; display:flex; flex-direction:column;
+  align-items:center; gap:12px}
+.pn-vacio .ico{width:38px; height:38px; color:var(--line-strong)}
+.pn-vacio p{font-size:.9rem; color:var(--ink-2); max-width:46ch; line-height:1.55}
+.pn-legal{display:flex; gap:10px; align-items:flex-start; margin-top:18px; padding-top:16px;
+  border-top:1px solid var(--line); font-size:.8rem; color:var(--ink-3); line-height:1.55}
+.pn-legal .ico{width:16px; height:16px; flex:none; margin-top:2px; color:var(--blue)}
+.pn-rango{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
+.pn-rango b{font-family:var(--f-d); font-size:1.1rem}
+.pn-filtros{display:flex; gap:8px; flex-wrap:wrap}
+.pn-dia{font-family:var(--f-d); font-size:.95rem; margin:22px 0 12px; display:flex;
+  align-items:center; gap:10px}
+/* Ojo: la mayuscula inicial se pone en PHP (ucfirst); con text-transform:
+   capitalize salia "Miercoles 9 De Septiembre". */
+.pn-dia i{font-style:normal; font-size:.75rem; color:var(--ink-3); background:var(--surface-2);
+  border-radius:999px; padding:2px 9px; font-family:var(--f-b)}
+.pn-dia:first-child{margin-top:0}
+
+/* ---------- tablas ---------- */
+.ptabla-wrap{overflow-x:auto; margin-inline:-22px; padding-inline:22px}
+.ptabla{width:100%; border-collapse:collapse; font-size:.88rem}
+.ptabla th{text-align:left; font-family:var(--f-d); font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); padding:10px 12px; white-space:nowrap;
+  border-bottom:1.5px solid var(--line-strong)}
+.ptabla td{padding:13px 12px; border-bottom:1px solid var(--line); vertical-align:middle}
+.td-fecha{white-space:nowrap; width:1%}
+.ptabla tr:last-child td{border-bottom:0}
+.ptabla tbody tr:hover td{background:var(--blue-tint)}
+.ptabla b{font-weight:600}
+.td-sub{display:block; font-size:.78rem; color:var(--ink-3); margin-top:2px}
+.td-num{text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+.td-com{font-family:var(--f-d); font-weight:800; color:var(--blue)}
+.td-acc{text-align:right; white-space:nowrap}
+.td-acc .pbtn{margin-left:5px}
+
+/* ---------- listas de horas y visitas ---------- */
+.hlist{display:flex; flex-direction:column; gap:11px}
+.hcard{display:grid; grid-template-columns:62px 1fr auto; gap:15px; align-items:center;
+  background:var(--surface-2); border:1px solid var(--line); border-radius:15px; padding:14px}
+.hcard-f{text-align:center; background:var(--surface); border:1px solid var(--line);
+  border-radius:12px; padding:8px 4px}
+.hcard-f b{display:block; font-family:var(--f-d); font-weight:800; font-size:1.3rem; line-height:1}
+.hcard-f span{font-size:.7rem; text-transform:uppercase; color:var(--ink-3); letter-spacing:.06em}
+.hcard-t b{display:block; font-family:var(--f-d); font-size:.95rem; line-height:1.3}
+.hcard-t span{display:flex; align-items:center; gap:5px; flex-wrap:wrap; font-size:.79rem;
+  color:var(--ink-3); margin-top:4px}
+.hcard-t .ico{width:14px; height:14px}
+.hcard-r{text-align:right; display:flex; flex-direction:column; gap:6px; align-items:flex-end}
+.hcard-r b{font-family:var(--f-d); font-weight:800; font-size:1rem}
+
+.vcard{background:var(--surface-2); border:1px solid var(--line); border-radius:15px;
+  overflow:hidden}
+.vcard[open]{border-color:var(--blue); background:var(--surface)}
+.vcard summary{display:grid; grid-template-columns:66px 1fr auto; gap:15px; align-items:center;
+  padding:14px; cursor:pointer; list-style:none}
+.vcard summary::-webkit-details-marker{display:none}
+/* main.css le dibuja una flechita a todo <summary> (los acordeones de preguntas
+   frecuentes). Aca sobra: la tarjeta ya trae su propio chevron. */
+.vcard summary::after{content:none}
+.vcard-h{font-family:var(--f-d); font-weight:800; font-size:1.02rem; text-align:center;
+  background:var(--blue); color:#fff; border-radius:11px; padding:9px 4px}
+.vcard-t b{display:block; font-family:var(--f-d); font-size:.95rem; line-height:1.3}
+.vcard-t span{font-size:.8rem; color:var(--ink-3)}
+.vcard-r{display:flex; align-items:center; gap:10px}
+.vcard-r .ico{width:17px; height:17px; color:var(--ink-3); transition:transform .2s}
+.vcard[open] .vcard-r .ico{transform:rotate(180deg)}
+.vcard-b{padding:0 14px 16px; border-top:1px solid var(--line); margin-top:2px; padding-top:16px}
+.vcard-datos{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px;
+  margin-bottom:14px}
+.vcard-datos span{display:block; font-size:.72rem; text-transform:uppercase; letter-spacing:.07em;
+  color:var(--ink-3); font-weight:600; margin-bottom:3px}
+.vcard-datos b{display:block; font-size:.9rem; line-height:1.4}
+.vcard-n{font-size:.86rem; color:var(--ink-2); line-height:1.55; padding:9px 12px;
+  background:var(--surface-2); border-radius:10px; margin-bottom:8px}
+.vcard-n b{color:var(--ink)}
+.vcard-alerta{background:var(--warn-bg); color:var(--warn)}
+.vcard-alerta b{color:var(--warn)}
+.vcard-form{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;
+  align-items:end; margin-top:14px; padding-top:16px; border-top:1px dashed var(--line)}
+.vcard-form label{display:flex; flex-direction:column; gap:5px}
+.vcard-form label span{font-size:.76rem; font-weight:600; color:var(--ink-3)}
+.vcard-form select,.vcard-form input,.vcard-form textarea{padding:10px 12px; border-radius:10px;
+  border:1.5px solid var(--line-strong); background:var(--surface); color:var(--ink);
+  font-family:var(--f-b); font-size:.88rem; width:100%}
+.vcard-form .pf-ancho{grid-column:1/-1}
+.vcard-form button{align-self:end}
+
+/* ---------- informes ---------- */
+.ilist{display:flex; flex-direction:column; gap:10px}
+.icard{display:grid; grid-template-columns:44px 1fr auto; gap:14px; align-items:center;
+  background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:13px;
+  transition:.18s}
+.icard:hover{border-color:var(--blue); background:var(--blue-tint)}
+.icard-ic{width:44px; height:44px; border-radius:13px; display:grid; place-items:center;
+  background:var(--blue-tint); color:var(--blue)}
+.icard-ic .ico{width:22px; height:22px}
+.icard-t b{display:flex; align-items:center; gap:9px; font-family:var(--f-d); font-size:.93rem;
+  color:var(--ink); line-height:1.3; flex-wrap:wrap}
+.icard-t>span{font-size:.79rem; color:var(--ink-3)}
+.icard-b{display:inline-flex; align-items:center; gap:7px; font-family:var(--f-d); font-weight:700;
+  font-size:.82rem; color:var(--blue); white-space:nowrap}
+.icard-b .ico{width:16px; height:16px}
+
+.ucard{display:grid; grid-template-columns:1fr auto auto; gap:14px; align-items:center;
+  background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:14px}
+.ucard-t b{display:block; font-family:var(--f-d); font-size:.92rem; line-height:1.3}
+.ucard-t span{font-size:.79rem; color:var(--ink-3)}
+.ucard input[type=file]{font-size:.82rem; max-width:230px}
+
+/* ---------- formularios ---------- */
+.pform{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.pf{display:flex; flex-direction:column; gap:6px}
+.pf-ancho{grid-column:1/-1}
+.pf label{font-size:.84rem; font-weight:600; color:var(--ink-2)}
+.pf input,.pf select,.pf textarea{padding:12px 14px; border-radius:12px;
+  border:1.5px solid var(--line-strong); background:var(--surface); color:var(--ink);
+  font-family:var(--f-b); font-size:.92rem; width:100%}
+.pf input:focus,.pf select:focus,.pf textarea:focus{border-color:var(--blue); outline:none;
+  box-shadow:0 0 0 4px var(--blue-tint)}
+.pf input:disabled{background:var(--surface-2); color:var(--ink-3)}
+.pf-ayuda{font-size:.78rem; color:var(--ink-3); line-height:1.45}
+.pf-acc{grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+
+/* ---------- grilla de disponibilidad ---------- */
+.grilla-wrap{overflow-x:auto}
+.grilla{border-collapse:separate; border-spacing:5px; width:100%; min-width:520px}
+.grilla th{font-family:var(--f-d); font-size:.75rem; color:var(--ink-3); padding:4px}
+.grilla tbody th{text-align:right; padding-right:10px; font-variant-numeric:tabular-nums}
+.grilla td{padding:0}
+.grilla input{position:absolute; opacity:0; pointer-events:none}
+.grilla label{display:block; height:34px; border-radius:9px; background:var(--surface-2);
+  border:1.5px solid var(--line); cursor:pointer; transition:.14s}
+.grilla label:hover{border-color:var(--blue)}
+.grilla input:checked+label{background:var(--blue); border-color:var(--blue);
+  box-shadow:0 3px 10px rgba(47,127,212,.32)}
+.grilla input:focus-visible+label{outline:2.5px solid var(--blue-bright); outline-offset:2px}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+
+/* ---------- gráficos ---------- */
+.chart-b{display:flex; align-items:stretch; gap:10px; height:210px}
+/* Tres filas: el numero arriba, la barra en el espacio que sobra y la etiqueta
+   abajo. Asi la barra nunca empuja la etiqueta y todas quedan a la misma altura. */
+.chart-col{flex:1; display:grid; grid-template-rows:auto 1fr auto; gap:6px;
+  justify-items:center; align-items:end; min-width:0}
+.chart-v{font-family:var(--f-d); font-weight:700; font-size:.72rem; color:var(--ink-3);
+  white-space:nowrap; font-variant-numeric:tabular-nums}
+.chart-bar{width:100%; max-width:52px; border-radius:8px 8px 3px 3px; background:var(--ac);
+  transition:opacity .18s; min-height:3px; align-self:end}
+.chart-col:hover .chart-bar{opacity:.78}
+.chart-x{font-size:.74rem; color:var(--ink-3); white-space:nowrap; overflow:hidden;
+  text-overflow:ellipsis; max-width:100%}
+.chart-l{position:relative}
+.chart-l svg{width:100%; height:190px; display:block; overflow:visible}
+.cl-area{fill:var(--ac); opacity:.13}
+.cl-line{fill:none; stroke:var(--ac); stroke-width:.9; stroke-linecap:round; stroke-linejoin:round;
+  vector-effect:non-scaling-stroke}
+.chart-lx{display:flex; justify-content:space-between; margin-top:10px; font-size:.75rem;
+  color:var(--ink-3)}
+.chart-d{display:flex; align-items:center; gap:24px; flex-wrap:wrap}
+.chart-d svg{width:158px; height:158px; flex:none; transform:rotate(-90deg)}
+.chart-d circle{fill:none; stroke-width:4.6}
+.cd-bg{stroke:var(--surface-2)}
+.chart-d text{transform:rotate(90deg); transform-origin:21px 21px; text-anchor:middle}
+.cd-n{font-family:var(--f-d); font-weight:800; font-size:6px; fill:var(--ink)}
+.cd-l{font-size:2.6px; fill:var(--ink-3); text-transform:uppercase; letter-spacing:.12em}
+.chart-leg{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;
+  flex:1; min-width:150px}
+.chart-leg li{display:flex; align-items:center; gap:10px; font-size:.85rem; color:var(--ink-2)}
+.chart-leg i{width:11px; height:11px; border-radius:3px; flex:none}
+.chart-leg span{flex:1}
+.chart-leg b{font-family:var(--f-d); font-variant-numeric:tabular-nums}
+
+/* ---------- ranking y equipo ---------- */
+.pranking{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;
+  counter-reset:r}
+.pranking li{display:grid; grid-template-columns:30px 40px 1fr auto; gap:13px; align-items:center;
+  padding:10px; border-radius:12px; background:var(--surface-2)}
+.prk-n{font-family:var(--f-d); font-weight:800; font-size:1rem; color:var(--ink-3); text-align:center}
+.pranking li:first-child .prk-n{color:var(--blue)}
+.prk-ic{width:40px; height:40px; border-radius:12px; display:grid; place-items:center;
+  background:var(--blue-tint); color:var(--blue)}
+.prk-ic .ilo{width:22px; height:22px}
+.prk-t b{display:block; font-family:var(--f-d); font-size:.9rem; line-height:1.25}
+.prk-t span{font-size:.77rem; color:var(--ink-3)}
+.prk-v{font-family:var(--f-d); font-weight:800; font-size:.93rem; font-variant-numeric:tabular-nums}
+
+.equipo{display:grid; grid-template-columns:repeat(auto-fit,minmax(276px,1fr)); gap:16px}
+.ecard{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-l);
+  padding:18px; display:flex; flex-direction:column; gap:14px}
+.ecard-h{display:flex; align-items:center; gap:13px}
+.ecard-h b{display:block; font-family:var(--f-d); font-size:1rem; line-height:1.25}
+.ecard-h span{font-size:.8rem; color:var(--ink-3)}
+.ecard-d{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:11px}
+.ecard-d li span{display:block; font-size:.72rem; color:var(--ink-3); text-transform:uppercase;
+  letter-spacing:.06em; font-weight:600}
+.ecard-d li b{font-family:var(--f-d); font-size:1rem; font-variant-numeric:tabular-nums}
+.ecard-c{display:flex; flex-wrap:wrap; gap:6px}
+.ecard-c span{font-size:.75rem; color:var(--ink-2); background:var(--surface);
+  border:1px solid var(--line); border-radius:999px; padding:3px 10px}
+.ecard-av{display:flex; align-items:center; gap:8px; font-size:.8rem; color:var(--warn)}
+.ecard-av .ico{width:15px; height:15px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .pgrid-2,.pgrid-2-1,.pgrid-1-2{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .acc{grid-template-columns:1fr}
+  .acc-caja{max-width:none; margin:0}
+  .acc-lado{order:-1; padding-block:32px}
+  .acc-lado ul{gap:12px}
+  .pn{grid-template-columns:1fr}
+  .pn-side{position:fixed; inset:0 auto 0 0; width:270px; z-index:40; max-height:none;
+    transform:translateX(-100%); transition:transform .25s cubic-bezier(.2,.8,.3,1)}
+  .pn-side.open{transform:none}
+  .pn-burger{display:grid}
+  .pn-top-t h1{font-size:1.05rem}
+  .pn-top-t p{display:none}
+  .pn-yo>span:last-child{display:none}
+  .pform{grid-template-columns:1fr}
+  .ucard{grid-template-columns:1fr; gap:10px}
+  .ucard input[type=file]{max-width:none}
+  .hcard{grid-template-columns:54px 1fr; gap:12px}
+  .hcard-r{grid-column:2; flex-direction:row; align-items:center; justify-content:space-between}
+  .vcard summary{grid-template-columns:58px 1fr auto; gap:11px}
+  .ptabla-wrap{margin-inline:-16px; padding-inline:16px}
+  .ptabla thead{display:none}
+  .ptabla,.ptabla tbody,.ptabla tr,.ptabla td{display:block; width:100%}
+  .ptabla tr{border:1px solid var(--line); border-radius:14px; margin-bottom:11px; padding:4px 14px;
+    background:var(--surface)}
+  .ptabla td{border-bottom:1px solid var(--line); padding:10px 0; display:flex;
+    justify-content:space-between; gap:14px; text-align:right}
+  .ptabla td::before{content:attr(data-th); font-size:.72rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--ink-3); font-weight:700; text-align:left; flex:none}
+  .ptabla td:empty{display:none}
+  .td-sub{text-align:right}
+  .chart-b{height:170px}
+  .chart-v{font-size:.66rem}
+}
+@media (max-width:620px){
+  .pkpis,.pkpis-3,.pkpis-4,.pkpis-5,.pkpis-6{grid-template-columns:1fr; gap:11px}
+  .pkpis-5>*,.pkpis-5>*:nth-child(n+4){grid-column:auto}
+  /* En el telefono la tarjeta se acuesta: icono a la izquierda y el dato al
+     lado. Asi los seis indicadores caben en una pantalla y media. */
+  .pkpi{display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto;
+    column-gap:14px; row-gap:2px; padding:14px 16px 14px 20px; align-items:center}
+  .pkpi-ic{grid-row:1/3; width:42px; height:42px}
+  .pkpi-l{grid-column:2; align-self:end}
+  .pkpi-v{grid-column:2; font-size:1.45rem; align-self:start}
+  .pkpi-f{grid-column:2; grid-row:3}
+  /* La tarjeta de visita: la etiqueta de estado baja en vez de encimarse. */
+  .vcard summary{grid-template-columns:52px 1fr; gap:10px}
+  .vcard-r{grid-column:2; justify-content:flex-start; flex-wrap:wrap}
+  /* Los avisos apilan el boton debajo del texto, a lo ancho. */
+  .pn-nota{display:grid; grid-template-columns:auto 1fr; gap:8px 12px; align-items:start}
+  .pn-nota>.ico{margin-top:2px}
+  .pn-nota div{grid-column:2}
+  .pn-nota>a,.pn-nota>button{grid-column:2; width:100%; justify-content:center}
+}

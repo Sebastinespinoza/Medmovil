@@ -1,0 +1,17 @@
+/*
+Theme Name: MedMóvil
+Theme URI: https://medmovil.cl
+Author: MedMóvil
+Description: Tema propio para MedMóvil — exámenes de imagenología, cardiología y laboratorio a domicilio. Catálogo de prestaciones tipo tienda, páginas por comuna para SEO local, cotizador, arancel, blog y tres portales: paciente, profesional y panel de control con comisiones. Precios editables desde el panel y marcado schema.org. Sin page builders ni plugins de pago.
+Version: 1.8.4
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: medmovil
+Tags: medical, healthcare, custom-colors, custom-menu, translation-ready
+*/
+
+/* Los estilos reales viven en assets/css/main.css.
+   Este archivo existe porque WordPress lo exige para identificar el tema. */

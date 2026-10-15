@@ -1,0 +1,44 @@
+/*
+ * Página de precios: la tabla del arancel.
+ *
+ * Se carga solo donde hace falta. Ver medmovil_assets() en inc/setup.php.
+ */
+/* ---------- arancel ---------- */
+.ar-tabla{width:100%; border-collapse:collapse; font-size:.9rem; table-layout:fixed}
+.ar-tabla col.c-ex{width:26%} .ar-tabla col.c-cod{width:8%} .ar-tabla col.c-li{width:14%}
+.ar-tabla col.c-du{width:7%}  .ar-tabla col.c-va{width:11%} .ar-tabla col.c-pr{width:34%}
+.ar-tabla th{text-align:left; font-family:var(--f-d); font-size:.7rem; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3); padding:11px 12px;
+  border-bottom:1.5px solid var(--line-strong); white-space:nowrap}
+.ar-tabla td{padding:12px; border-bottom:1px solid var(--line); vertical-align:top}
+.ar-tabla tr:hover td{background:var(--blue-tint)}
+.ar-tabla td:first-child a{font-weight:600; color:var(--ink); display:block; line-height:1.35}
+.ar-tabla td:first-child a:hover{color:var(--blue)}
+.ar-tabla .ar-num{text-align:right; white-space:nowrap}
+.ar-tabla .ar-precio{font-family:var(--f-d); font-weight:800; font-size:.98rem; letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
+.ar-linea{display:flex; align-items:flex-start; gap:7px; font-size:.79rem; font-weight:600;
+  line-height:1.35; color:var(--ac,var(--blue))}
+.ar-linea::before{content:""; width:8px; height:8px; border-radius:50%; flex:none;
+  background:var(--ac,var(--blue)); margin-top:5px}
+.ar-ayuno{display:inline-block; font-size:.7rem; font-weight:700; line-height:1.2; white-space:nowrap;
+  border-radius:999px; padding:3px 9px; margin-bottom:5px}
+.ar-ayuno-no{color:var(--ok); background:var(--ok-bg)}
+.ar-ayuno-si{color:var(--warn); background:var(--warn-bg)}
+.ar-ayuno-depende{color:var(--blue); background:var(--blue-tint)}
+.ar-prep-t{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  font-size:.82rem; color:var(--ink-3); line-height:1.45; cursor:help}
+@media (max-width:860px){
+  .ar-tabla thead{display:none}
+  .ar-tabla,.ar-tabla tbody,.ar-tabla tr,.ar-tabla td{display:block; width:100%}
+  .ar-tabla tr{border:1px solid var(--line); border-radius:var(--r-m); margin-bottom:11px;
+    padding:6px 12px; background:var(--surface)}
+  .ar-tabla td{border-bottom:1px solid var(--line); padding:9px 0; display:flex;
+    justify-content:space-between; gap:14px; text-align:right}
+  .ar-tabla td:last-child{border-bottom:0}
+  .ar-tabla td::before{content:attr(data-th); font-size:.72rem; letter-spacing:.07em;
+    text-transform:uppercase; color:var(--ink-3); font-weight:700; text-align:left; flex:none}
+  .ar-tabla{table-layout:auto}
+  .ar-tabla .ar-prep-t{-webkit-line-clamp:4}
+  .ar-tabla .ar-prep{flex-direction:column; align-items:flex-end}
+  .ar-linea{max-width:none}}

@@ -1,0 +1,30 @@
+.reserva-page{padding:clamp(34px,5vw,72px) 0 90px;background:#f7faff}
+.reserva-page .wrap>h1{font-size:clamp(2.25rem,5vw,4.1rem);letter-spacing:-.055em;line-height:1.05;margin:16px 0 18px}
+.reserva-page .lede{max-width:72ch;margin:0 0 36px;color:var(--ink-2)}
+.reserva-titular{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2);font-size:.86rem;margin:-18px 0 28px;line-height:1.5}
+.reserva-titular .ico{width:17px;height:17px;flex:none;color:var(--blue);margin-top:2px}
+.reserva-form{max-width:1200px}
+.reserva-campos{display:grid;grid-template-columns:1.12fr .88fr;gap:20px;align-items:start}
+.reserva-panel{border:1px solid var(--line);background:#fff;border-radius:18px;padding:clamp(20px,3vw,34px);box-shadow:0 18px 52px rgba(13,46,79,.05)}
+.reserva-panel h2{font-size:1.35rem;letter-spacing:-.035em;margin:0 0 7px}
+.reserva-panel>p{color:var(--ink-3);line-height:1.5;font-size:.92rem;margin:0 0 20px}
+.reserva-panel>p:last-child{margin:17px 0 0}
+.reserva-examenes{max-height:380px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.reserva-examen{display:flex;gap:12px;align-items:center;padding:12px 15px;cursor:pointer;border-bottom:1px solid var(--line);line-height:1.35}
+.reserva-examen:last-child{border-bottom:0}
+.reserva-examen:has(input:checked){background:#ecf5ff}
+.reserva-examen input{width:18px;height:18px;accent-color:var(--blue);flex:none}
+.reserva-examen span{flex:1;font-weight:600}
+.reserva-examen b{font-size:.89rem;white-space:nowrap;color:var(--blue)}
+.reserva-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.reserva-grid label{display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:.86rem;color:var(--ink-2)}
+.reserva-grid select,.reserva-grid input{width:100%;min-width:0;min-height:48px;padding:10px 12px;border-radius:9px;border:1px solid var(--line-strong);background:white;color:var(--ink);font:inherit;font-size:.96rem}
+.reserva-grid :is(select,input):focus-visible,.reserva-examen:focus-within{outline:2px solid var(--blue);outline-offset:2px}
+.reserva-ancho{grid-column:1/-1}
+.reserva-final{display:flex;justify-content:space-between;align-items:center;gap:22px;margin-top:20px;padding:24px 28px;border-radius:17px;background:var(--navy);color:white}
+.reserva-final strong{display:block;color:#cfe1f9;font-size:.86rem}.reserva-final b{display:block;font-size:2rem;line-height:1.15;margin-top:3px}
+.reserva-final p{font-size:.8rem;color:#cfe1f9;max-width:56ch;margin:7px 0 0}.reserva-final .btn{white-space:nowrap;justify-content:center}
+.reserva-aviso{display:flex;align-items:flex-start;gap:20px;max-width:780px;border-radius:17px;border:1px solid var(--line);background:#fff;padding:32px;box-shadow:0 18px 52px rgba(13,46,79,.05)}
+.reserva-aviso>.ico{width:34px;height:34px;flex:none;color:var(--blue)}.reserva-aviso h2{margin:0 0 10px}.reserva-aviso p{margin:0 0 20px;color:var(--ink-2);line-height:1.55}.reserva-acciones{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:840px){.reserva-campos{grid-template-columns:1fr}.reserva-final{align-items:stretch;flex-direction:column}}
+@media(max-width:500px){.reserva-grid{grid-template-columns:1fr}.reserva-final{padding:22px}.reserva-panel{padding:20px}.reserva-examen{align-items:start}.reserva-examen b{font-size:.8rem}}

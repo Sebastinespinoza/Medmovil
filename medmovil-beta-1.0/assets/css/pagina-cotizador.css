@@ -1,0 +1,87 @@
+/*
+ * Cotizador. La hoja de impresión NO está acá: el carrito imprime desde cualquier página, así que eso vive en main.css.
+ *
+ * Se carga solo donde hace falta. Ver medmovil_assets() en inc/setup.php.
+ */
+/* ============================================================
+   Cuarta vuelta: cotizador, arancel y blog
+   ============================================================ */
+
+/* ---------- cotizador ---------- */
+.cz-hero{position:relative; overflow:hidden; padding-block:34px 46px;
+  background:radial-gradient(760px 420px at 84% -10%, var(--blue-tint), transparent 66%),
+             linear-gradient(180deg,var(--surface),var(--paper))}
+.cz-badge{display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+  font-family:var(--f-d); font-weight:700; font-size:.74rem; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--blue); background:var(--blue-tint);
+  border:1px solid var(--line); border-radius:999px; padding:7px 15px}
+.cz-hero h1{font-size:clamp(2rem,4vw,3rem); margin-top:16px}
+.cz-pills{display:flex; flex-wrap:wrap; gap:9px; margin-top:20px}
+.cz-pills span{display:inline-flex; align-items:center; gap:8px; font-size:.85rem; font-weight:600;
+  color:var(--ink-2); background:var(--surface); border:1px solid var(--line);
+  border-radius:999px; padding:8px 15px}
+
+.cz-bar{display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:20px}
+.cz-buscar{flex:1; min-width:260px; position:relative; display:flex; align-items:center}
+.cz-buscar input{width:100%; padding:14px 44px; border-radius:999px; border:1.5px solid var(--line-strong);
+  background:var(--surface); color:var(--ink); font-family:var(--f-b); font-size:.95rem}
+.cz-buscar input:focus{border-color:var(--blue)}
+.cz-cuenta{font-size:.86rem; color:var(--ink-3); margin:0}
+.cz-cuenta b{color:var(--ink); font-weight:700}
+
+.cz-grid{display:grid; grid-template-columns:1fr 372px; gap:26px; align-items:start}
+.cz-grupo{margin-bottom:26px}
+.cz-grupo h2{font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ac,var(--blue));
+  font-family:var(--f-d); margin-bottom:12px; display:flex; align-items:center; gap:10px}
+.cz-grupo h2::after{content:""; flex:1; height:1px; background:var(--line)}
+.cz-it{display:grid; grid-template-columns:auto 1fr auto auto; gap:14px; align-items:center;
+  background:var(--surface); border:1px solid var(--line); border-radius:15px;
+  padding:13px 16px; margin-bottom:9px; transition:border-color .16s, box-shadow .16s}
+.cz-it:hover{border-color:var(--line-strong); box-shadow:var(--shadow-s)}
+.cz-it:has(.cz-chk:checked){border-color:var(--ac,var(--blue));
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--ac,var(--blue)) 18%,transparent)}
+.cz-chk{width:21px; height:21px; accent-color:var(--ac,var(--blue)); cursor:pointer; flex:none; margin:0}
+.cz-it label{cursor:pointer; min-width:0}
+.cz-it-n{display:block; font-family:var(--f-d); font-weight:700; font-size:.97rem; line-height:1.3}
+.cz-it-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px}
+.cz-it-tags span{font-size:.73rem; color:var(--ink-3); background:var(--surface-2);
+  border-radius:999px; padding:3px 9px}
+.cz-ayuno{color:var(--warn) !important; background:var(--warn-bg) !important; font-weight:600}
+.cz-it-p{font-family:var(--f-d); font-weight:800; font-size:1.02rem; letter-spacing:-.025em;
+  font-variant-numeric:tabular-nums; white-space:nowrap}
+.cz-it-v{display:grid; place-items:center; width:32px; height:32px; border-radius:10px;
+  color:var(--ink-3); background:var(--surface-2); transition:.16s}
+.cz-it-v:hover{background:var(--blue); color:#fff}
+
+.cz-res{position:sticky; top:96px}
+.cz-res-in{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl);
+  padding:22px; box-shadow:var(--shadow-m); display:flex; flex-direction:column; gap:15px}
+.cz-res h2{font-size:1.1rem; display:flex; align-items:center; gap:10px}
+.cz-sel{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
+.cz-sel li{display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
+  font-size:.88rem; padding-bottom:8px; border-bottom:1px dashed var(--line)}
+.cz-sel li b{font-weight:600; color:var(--ink-2)}
+.cz-sel li span{font-family:var(--f-d); font-weight:700; white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+.cz-sel button{background:none; border:0; cursor:pointer; color:var(--ink-3); padding:0 0 0 6px;
+  font-size:1rem; line-height:1}
+.cz-sel button:hover{color:var(--bad)}
+.cz-vacio{font-size:.87rem; color:var(--ink-3); line-height:1.5}
+.cz-com label{display:block; font-size:.82rem; font-weight:600; color:var(--ink-2); margin-bottom:8px}
+.cz-sel-com select{width:100%; appearance:none; padding:12px 40px 12px 15px; border-radius:13px;
+  border:1.5px solid var(--line-strong); background:var(--surface); color:var(--ink);
+  font-family:var(--f-b); font-size:.93rem; cursor:pointer}
+.cz-total{display:flex; align-items:baseline; justify-content:space-between; padding-top:14px;
+  border-top:1px solid var(--line)}
+.cz-total span{font-size:.85rem; color:var(--ink-2)}
+.cz-total b{font-family:var(--f-d); font-weight:800; font-size:1.7rem; letter-spacing:-.035em;
+  font-variant-numeric:tabular-nums}
+.cz-nota{display:flex; gap:9px; font-size:.77rem; color:var(--ink-3); line-height:1.5}
+.cz-btns{display:flex; flex-direction:column; gap:9px}
+
+@media (max-width:1040px){
+  .cz-grid{grid-template-columns:1fr}
+  .cz-res{position:static}}
+@media (max-width:860px){
+  .cz-it{grid-template-columns:auto 1fr auto; gap:11px}
+  .cz-it-v{display:none}}
